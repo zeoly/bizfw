@@ -1,0 +1,42 @@
+<div class="navbar-header {{app.settings.navbarHeaderColor}}">
+	<button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">
+		<i class="glyphicon glyphicon-cog"></i>
+	</button>
+	<button class="pull-right visible-xs" ui-toggle-class="off-screen" data-target=".app-aside" ui-scroll="app">
+		<i class="glyphicon glyphicon-align-justify"></i>
+	</button>
+	<a href="#/" class="navbar-brand text-lt">
+		<i class="fa fa-btc"></i> <img src="img/logo.png" alt="." class="hide">
+		<span class="hidden-folded m-l-xs">{{app.name}}</span>
+	</a>
+</div>
+
+<div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}">
+
+	<!-- search form -->
+	<div class="nav navbar-nav hidden-xs">
+		<a href="#/" class="navbar-brand text-lt">
+			<span class="hidden-folded m-l-xs">林同棪BIM协同平台系统</span>
+		</a>
+	</div>
+
+	<ul class="nav navbar-nav navbar-right">
+		<li class="dropdown" uib-dropdown>
+			<a class="dropdown-toggle clear" uib-dropdown-toggle>
+				<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+					<img src="img/a0.jpg" alt="..."> <i class="on md b-white bottom"></i>
+				</span>
+				<span class="hidden-sm">你好，{{peopleName}}</span>
+				<b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu animated fadeInRight w">
+				<li><a ng-click="openChangePwd()">修改密码</a></li>
+				<li><a ng-click="logout()">退出</a></li>
+			</ul></li>
+	</ul>
+	<!-- / navbar right -->
+
+</div>
+<script type="text/ng-template" id="changePwdDialog">
+	<div ng-include="'page/common/changePassword.html'"></div>
+</script>

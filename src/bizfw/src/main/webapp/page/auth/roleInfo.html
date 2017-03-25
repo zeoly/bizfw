@@ -1,0 +1,21 @@
+<div class="modal-header">
+	<h4 class="modal-title">角色信息</h4>
+</div>
+<div class="modal-body">
+  <form role="form" class="form-horizontal">
+    <div class="form-group">
+      <div class="col-md-12">
+        <label for="rolename">角色名称：</label>
+        <input class="form-control" id="rolename" type="text" required="required" ng-model="role.name" autofocus/>
+      </div>
+      <div class="col-md-12">
+        <label for="desc">角色描述</label>
+        <input class="form-control" id="roledesc" type="text" required="required" ng-model="role.description"/>
+      </div>
+    </div>
+  </form>   
+</div>
+<div class="modal-footer">  
+	<button class="btn btn-primary" ng-disabled="!(role.name&&role.description)" ng-click=confirm()>保存</button>           
+	<button class="btn btn-default" ng-click="cancel()">取消</button>
+</div>

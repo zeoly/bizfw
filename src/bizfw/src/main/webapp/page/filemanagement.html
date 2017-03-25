@@ -1,0 +1,59 @@
+<!-- Nested node template -->
+<script type="text/ng-template" id="nodes_renderer.html">
+  <div ui-tree-handle class="angular-ui-tree-node tree-node-content">
+    <a class="btn btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)"><span
+        class="glyphicon"
+        ng-class="{
+          'glyphicon-folder-close': collapsed,
+          'glyphicon-folder-open': !collapsed
+        }"></span></a>
+    <a class="text-overflow" ng-click="toggle(this)" >{{node.title}}</a>
+  </div>
+  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+    </li>
+  </ol>
+</script>
+
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="FileCtrl">
+  <div class="col w-md bg-light b-r bg-auto">
+    <div class="wrapper-sm dker b-b">
+      <h5 class="m-n font-normal">文件路径</h5>
+    </div>
+    <div class="m-t-xs">
+    <button type="button" class="btn btn-success m-l-xs" ng-click="collhide?collapseAll():expandAll()">
+        {{ collhide && '展开' || '收起' }}
+        </button>
+    <button type="button" class="btn btn-danger" ng-click="resettree()">reset</button>
+    </div>
+
+        <div ui-tree="treeOptions" id="tree-root">
+      <ol ui-tree-nodes ng-model="data">
+        <li ng-repeat="node in data" ui-tree-node data-nodrag ng-include="'nodes_renderer.html'"></li>
+      </ol>
+    </div>
+  </div>
+
+
+  <div class="col">
+    <div class="wrapper-sm dker b-b">
+      <h5 class="m-n font-normal">文件管理</h5>
+    </div>
+<div class="m-l-xs m-t-xs">
+<web-uploader class="btn btn-info" type="image" accept="accept">uploader</web-uploader>
+<button type="button" id="swapData" class="btn btn-success" ng-click=" addData()">文件上传</button>
+      <button type="button" id="addData" class="btn btn-success" ng-click="swapData()">批量删除</button>
+<!--       <button type="button" id="removeFirstRow" class="btn btn-success" ng-click="removeFirstRow()">Remove First Row</button>
+      <button type="button" id="reset" class="btn btn-success" ng-click="reset()">Reset</button>
+      <button type="button" class="btn btn-success" ng-click="selectAll()">selectAll</button>
+      <button type="button" class="btn btn-danger" ng-click="getselect()">selectone</button> -->
+<!--   <div class="m-t-xs" id="grid1" ui-grid="gridOpts" class="grid"></div>
+ -->  <div ui-grid="gridOptions" ui-grid-selection class="mygrid m-t-xs"></div>
+
+</div>
+  </div>
+</div>
+
+
+<script src="js/common/controllers/FileCtrl.js"></script>
+<script src="js/include/webuploader.js"></script>

@@ -1,0 +1,21 @@
+<div ui-tree-handle class="angular-ui-tree-node tree-node-content">
+	<a class="btn btn-xs" data-nodrag ng-click="(!node.childList || node.childList.length == 0)? return : toggle(this)">
+		<span class="glyphicon"
+			ng-class="{'glyphicon-plus': collapsed && node.childList && node.childList.length > 0, 'glyphicon-home': !node.childList || node.childList.length == 0,'glyphicon-minus': !collapsed && node.childList && node.childList.length > 0}"></span>
+	</a>
+	<a class="text-overflow" ng-click="showFolderDetail(node)">{{node.name}}</a>
+	<a class="pull-right btn-xs" tooltip-placement="top-right" uib-tooltip="删除" data-nodrag ng-click="deleteFolder(node)">
+		<span class="glyphicon glyphicon-remove"></span>
+	</a>
+	<a class="pull-right btn-xs" tooltip-placement="top-right" uib-tooltip="新增子文件夹" data-nodrag
+		ng-click="openFolderInfoDialog(node, 0)" style="margin-right: 4px;">
+		<span class="glyphicon glyphicon-plus"></span>
+	</a>
+	<a class="pull-right btn-xs" tooltip-placement="top-right" uib-tooltip="修改" data-nodrag
+		ng-click="openFolderInfoDialog(node, 1)" style="margin-right: 4px;">
+		<span class="glyphicon glyphicon-pencil"></span>
+	</a>
+</div>
+<ol ui-tree-nodes="" ng-model="node.childList" ng-class="{hidden: collapsed}">
+	<li ng-repeat="node in node.childList" ui-tree-node ng-include="'folderTree'"></li>
+</ol>

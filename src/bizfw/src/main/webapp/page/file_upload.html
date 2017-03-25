@@ -1,0 +1,17 @@
+ <div ng-controller="MainCtrl">
+      <button type="button" class="btn btn-success" ng-click="toggleMultiSelect()">Toggle multiSelect</button>  <strong>MultiSelect:</strong> <span ng-bind="gridApi.grid.options.multiSelect"></span>
+      <button type="button" class="btn btn-success" ng-click="toggleRow1()">Toggle Row 0</button>
+      <br/>
+      <br/>
+      <button type="button" class="btn btn-success" ng-click="toggleModifierKeysToMultiSelect()">Toggle modifierKeysToMultiSelect</button>  <strong>ModifierKeysToMultiSelect:</strong> <span ng-bind="gridApi.grid.options.modifierKeysToMultiSelect"> </span>
+      <br/>
+      <br/>
+      <button type="button" class="btn btn-success" ng-disabled="!gridApi.grid.options.multiSelect" ng-click="selectAll()">Select All</button>
+      <button type="button" class="btn btn-success" ng-click="clearAll()">Clear All</button>
+      <button type="button" class="btn btn-success" ng-click="setSelectable()">Set Selectable</button>
+      <button type="button" class="btn btn-success" ng-click="toggleFullRowSelection()">Toggle full row selection</button>
+      <button type="button" class="btn btn-success" ng-click="addData12()">adddata</button>
+      <br/>
+    
+      <div ui-grid="gridOptions" ui-grid-selection class="grid"></div>
+    </div>

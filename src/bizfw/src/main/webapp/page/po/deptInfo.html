@@ -1,0 +1,21 @@
+<div class="modal-header">
+	<h4 class="modal-title">机构信息</h4>
+</div>
+<div class="modal-body">
+	<form role="form" class="form-horizontal">
+		<div class="form-group">
+			<div class="col-md-12">
+				<label for="name">部门名称：</label>
+				<input class="form-control" type="text" required="required" ng-model="department.name" autofocus />
+			</div>
+			<div class="col-md-12">
+				<label for="name">部门编码：</label>
+				<input class="form-control" type="text" required="required" ng-model="department.code" />
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-disabled="!department.name" ng-click="saveDeptInfo()">保存</button>
+	<button class="btn btn-default" ng-click="cancel()">取消</button>
+</div>

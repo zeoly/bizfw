@@ -1,0 +1,63 @@
+<!-- Nested node template -->
+<script type="text/ng-template" id="nodes_renderer.html">
+  <div ui-tree-handle class="angular-ui-tree-node tree-node-content">
+    <a class="btn btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)"><span
+      class="glyphicon" ng-class="{'glyphicon-folder-close': collapsed,'glyphicon-folder-open': !collapsed}"></span>
+    </a>
+    <a class="text-overflow" ng-click="UrlData(this)">{{node.title}}
+    </a>
+<!--     <a class="pull-right btn-xs" tooltip-placement="top-right" uib-tooltip="删除节点" data-nodrag ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span>
+    </a>
+    <a class="pull-right btn-xs" tooltip-placement="top-right" uib-tooltip="新增子部门" data-nodrag ng-click="openNewSubDept(this)" style="margin-right: 4px;"><span class="glyphicon glyphicon-plus"></span>
+    </a>
+    <a class="pull-right btn-xs" tooltip-placement="top-right" uib-tooltip="修改部门" data-nodrag ng-click="openmodifyDept(this,'sm')" style="margin-right: 4px;"><span class="glyphicon glyphicon-pencil"></span>
+    </a> -->
+  </div>
+  <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+    </li>
+  </ol>
+</script>
+<!-- /Nested node template -->
+<!-- LJBF part -->
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="FileCtrl">
+  <div class="col w-md bg-light b-r bg-auto">
+    <div class="wrapper-sm dker b-b">
+      <h5 class="m-n font-normal">文件路径
+        <a class="pull-right btn-xs btn-dark" tooltip-placement="top-right" uib-tooltip="展开" ng-click="collhide?collapseAll():expandAll()"><span class="glyphicon glyphicon-th-list"></span>
+        </a>
+      </h5>
+    </div>
+    <div class="m-t-xs">
+    </div>
+    <div ui-tree="treeOptions" id="tree-root">
+      <ol ui-tree-nodes ng-model="folderdata">
+        <li ng-repeat="node in folderdata" ui-tree-node data-nodrag ng-include="'nodes_renderer.html'"></li>
+      </ol>
+    </div>
+  </div>
+  <!-- /LJBF part -->
+  <!-- /WJBF part -->
+  <div class="col">
+    <div class="wrapper-sm dker b-b">
+      <h5 class="m-n font-normal">文件管理</h5>
+    </div>
+    <div class="m-l-xs m-t-xs">
+      <!-- <web-uploader class="btn btn-dark btn-sm" type="image" accept="accept">uploader</web-uploader> -->
+      <button class="btn btn-dark btn-sm" type="button" ng-click="addData()">文件上传</button>
+      <button class="btn btn-dark btn-sm" type="button" ng-click="swapData()">批量删除</button>
+
+<!--       <button type="button" id="removeFirstRow" class="btn btn-success" ng-click="removeFirstRow()">Remove First Row</button>
+      <button type="button" id="reset" class="btn btn-success" ng-click="reset()">Reset</button>
+      <button type="button" class="btn btn-success" ng-click="selectAll()">selectAll</button>
+      <button type="button" class="btn btn-danger" ng-click="getselect()">selectone</button> -->
+<!--   <div class="m-t-xs" id="grid1" ui-grid="gridOpts" class="grid"></div>
+-->  <div ui-grid="gridOptions" ui-grid-selection class="mygrid m-t-xs"></div>
+
+</div>
+</div>
+</div>
+
+
+<script src="js/common/controllers/FileMgt.js"></script>
+<script src="js/include/webuploader.js"></script>

@@ -1,0 +1,21 @@
+<div ui-tree-handle class="angular-ui-tree-node tree-node-content">
+	<a class="btn btn-xs" data-nodrag ng-click="(!node.childDepartmentList || node.childDepartmentList.length == 0)? return : toggle(this)">
+		<span class="glyphicon"
+			ng-class="{'glyphicon-plus': collapsed && node.childDepartmentList && node.childDepartmentList.length > 0, 'glyphicon-home': !node.childDepartmentList || node.childDepartmentList.length == 0,'glyphicon-minus': !collapsed && node.childDepartmentList && node.childDepartmentList.length > 0}"></span>
+	</a>
+	<a class="text-overflow" ng-click="getPeopleList(node)">{{node.name}}({{node.code}}) </a>
+	<a class="pull-right btn-xs" tooltip-placement="top-right" uib-tooltip="删除" ng-show="node.code!='root'" data-nodrag ng-click="deleteDept(node)">
+		<span class="glyphicon glyphicon-remove"></span>
+	</a>
+	<a class="pull-right btn-xs" tooltip-placement="top-right" uib-tooltip="新增子部门" data-nodrag
+		ng-click="openDeptInfoDialog(node, 0)" style="margin-right: 4px;">
+		<span class="glyphicon glyphicon-plus"></span>
+	</a>
+	<a class="pull-right btn-xs" tooltip-placement="top-right" uib-tooltip="修改" ng-show="node.code!='root'" data-nodrag
+		ng-click="openDeptInfoDialog(node, 1)" style="margin-right: 4px;">
+		<span class="glyphicon glyphicon-pencil"></span>
+	</a>
+</div>
+<ol ui-tree-nodes="" ng-model="node.childDepartmentList" ng-class="{hidden: collapsed}">
+	<li ng-repeat="node in node.childDepartmentList" ui-tree-node ng-include="'deptTree'"></li>
+</ol>

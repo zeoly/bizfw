@@ -1,0 +1,27 @@
+<div class="modal-header">
+	<h4 class="modal-title">文件历史信息</h4>
+</div>
+<div class="modal-body">
+	<form role="form" class="form-horizontal">
+		<div>
+			<table class="table">
+				<tr>
+					<th>上传日期</th>
+					<th>上传人</th>
+					<th>版本号</th>
+					<th>操作</th>
+				</tr>
+				<tr ng-repeat="history in historyData">
+					<td>{{history.createDate}}</td>
+					<td>{{history.createBy}}</td>
+					<td>{{history.revision}}</td>
+					<td><a ng-href="fileAction/downloadFile.do?fileId={{history.idBfDocument}}"><i class="fa fa-download fa-1x5" uib-tooltip="下载"></a></td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+<!-- 	<button class="btn btn-primary" ng-disabled="!department.name" ng-click="saveDeptInfo()">保存</button> -->
+	<button class="btn btn-default" ng-click="cancel()">取消</button>
+</div>

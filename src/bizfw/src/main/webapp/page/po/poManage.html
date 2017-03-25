@@ -1,0 +1,42 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="DeptCtrl">
+	<!-- poTree -->
+	<div class="col w-xxl bg-light b-r bg-auto">
+		<div class="wrapper dker b-b">
+			<h4 class="m-n font-normal">机构管理
+				<a class="pull-right btn-xs btn-dark"
+				tooltip-placement="top-right" uib-tooltip="展开"
+				ng-click="collhide?collapseAll():expandAll()">
+				<span class="glyphicon" ng-class="{'glyphicon-minus': collhide,'glyphicon-plus': !collhide}"></span></a>
+			</h4>
+		</div>
+		<div ui-tree="treeOptions" id="tree-root" data-empty-placeholder-enabled="false">
+			<ol ui-tree-nodes ng-model="data">
+				<li ng-repeat="node in data" ui-tree-node data-nodrag ng-include="'deptTree'"></li>
+			</ol>
+		</div>
+	</div>
+	<!-- /poTree -->
+	<div class="col">
+	<div class="wrapper bg-light dk b-b">
+			<h4 class="m-n font-normal">人员管理 - {{currDept.name}}
+				<a class="pull-right btn-xs btn-dark" tooltip-placement="bottom-right" uib-tooltip="最大化表格" ng-click="MaximizemSize()">
+					<span class="glyphicon glyphicon-resize-full"></span>
+				</a>
+			</h4>
+		</div>
+		<div class="m-l-xs m-t-xs">
+			<button type="button" id="swapData" class="btn btn-info btn-sm" ng-disabled="!currDept" ng-click="openPeopleInfoDialog()">增加人员</button>
+			<div ui-grid="gridOptions" ui-grid-selection class="mygrid m-t-xs" ui-grid-auto-resize ui-grid-pagination></div>
+		</div>
+	</div>
+</div>
+<script type="text/ng-template" id="deptInfoDialog">
+	<div ng-include="'page/po/deptInfo.html'"></div>
+</script>
+<script type="text/ng-template" id="peopleInfoDialog">
+	<div ng-include="'page/po/peopleInfo.html'"></div>
+</script>
+<script type="text/ng-template" id="deptTree">
+	<div ng-include="'page/po/deptTree.html'"></div>
+</script>
+<script type="text/javascript" src="js/po/poManage.js"></script>

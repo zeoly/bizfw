@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="SpringJobSchedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+<!-- 				<ref bean="aaaTrigger" /> -->
+			</list>
+		</property>
+	</bean>
+
+	<bean id="aaaTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="aaaJob" />
+		<property name="cronExpression" value="0/10 * * * * ?" />
+	</bean>
+
+	<bean id="aaaQuartz" class="com.thinkequip.bizfw.test.TestQuartz" />
+	<bean id="aaaJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="aaaQuartz" />
+		<property name="targetMethod" value="execute" />
+	</bean>
+</beans>

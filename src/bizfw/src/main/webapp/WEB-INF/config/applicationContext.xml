@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/context 
+ 	http://www.springframework.org/schema/context/spring-context-4.3.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<import resource="quartz.xml" />
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<!-- 这里支持多种寻址方式：classpath和file -->
+				<value>classpath:../config/db.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 配置hibernate begin -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${db.driverClass}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+	</bean>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource">
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${db.dialect}</prop>
+				<prop key="hibernate.show_sql">${db.showSql}</prop>
+				<prop key="current_session_context_class">thread</prop>
+				<prop key="hibernate.connection.autocommit">true</prop>
+			</props>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>com.thinkequip.bizfw.po.model.People</value>
+				<value>com.thinkequip.bizfw.po.model.Department</value>
+				<value>com.thinkequip.bizfw.po.model.DepartmentRelation</value>
+				<value>com.thinkequip.bizfw.auth.model.Role</value>
+				<value>com.thinkequip.bizfw.auth.model.Menu</value>
+				<value>com.thinkequip.bizfw.auth.model.PeopleRoleRelation</value>
+				<value>com.thinkequip.bizfw.auth.model.RoleMenuRelation</value>
+				<value>com.thinkequip.bizfw.document.model.Document</value>
+				<value>com.thinkequip.bizfw.document.model.RoleDocumentRelation</value>
+				<value>com.thinkequip.bizfw.document.model.DocumentOperationLog</value>
+				<value>com.thinkequip.bizfw.document.model.FileDeleted</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<tx:annotation-driven transaction-manager="txManager" proxy-target-class="true" />
+
+	<context:component-scan base-package="com.thinkequip.bizfw" use-default-filters="false">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="maxUploadSize" value="500000000" />
+	</bean>
+</beans>

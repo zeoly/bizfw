@@ -1,0 +1,22 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="RoleCtrl">
+	<!-- treePart -->
+	<div class="col bg-light b-r bg-auto">
+		<div class="wrapper dker b-b">
+			<h4 class="m-n font-normal">
+				角色管理
+				<a class="pull-right btn-xs btn-dark" tooltip-placement="bottom-right" uib-tooltip="最大化表格"
+					ng-click="MaximizemSize()">
+					<span class="glyphicon glyphicon-resize-full"></span>
+				</a>
+			</h4>
+		</div>
+		<div class="m-xs">
+			<button type="button" class="btn btn-info btn-sm" ng-click="openRoleInfo()">新增角色</button>
+			<div ui-grid="gridOptions" ui-grid-selection class="mygrid m-t-xs" ui-grid-auto-resize ui-grid-pagination></div>
+		</div>
+	</div>
+</div>
+<script type="text/ng-template" id="roleInfoDialog">
+	<div ng-include="'page/auth/roleInfo.html'"></div>
+</script>
+<script type="text/javascript" src="js/auth/roleManage.js"></script>

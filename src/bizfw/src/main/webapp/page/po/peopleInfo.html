@@ -1,0 +1,28 @@
+<div class="modal-header">
+	<h4 class="modal-title">人员信息</h4>
+</div>
+<div class="modal-body">
+	<form role="form" class="form-horizontal">
+		<div class="form-group">
+			<div class="col-md-12">
+				<label for="code">用户名：</label>
+				<input class="form-control" type="text" required="required" ng-model="people.code" autofocus />
+			</div>
+			<div class="col-md-12">
+				<label for="name">姓名：</label>
+				<input class="form-control" type="text" required="required" ng-model="people.name" />
+			</div>
+			<div class="col-md-12">
+				<label>人员角色</label>
+				<ui-select multiple ng-model="role.selected" title="选择角色"> <ui-select-match placeholder="点击选择对应角色">{{$item.name}}</ui-select-match>
+				<ui-select-choices repeat="role in roledata">
+				<div>{{role.name}}</div>
+				</ui-select-choices> </ui-select>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-disabled="!people.code || !people.name" ng-click="savePeopleInfo()">保存</button>
+	<button class="btn btn-default" ng-click="cancel()">取消</button>
+</div>

@@ -1,0 +1,26 @@
+<div class="aside-wrap">
+  <!-- if you want to use a custom scroll when aside fixed, use the slimScroll
+    <div class="navi-wrap" ui-jq="slimScroll" ui-options="{height:'100%', size:'8px'}">
+    -->
+    <div class="navi-wrap">
+     <!-- nav -->
+     <nav ui-nav class="navi" ng-include="'page/blocks/nav.html'"></nav>
+     <!-- nav -->
+   </div>
+
+  <div class="app-aside-footer ">
+
+    <div class="nav navbar-nav hidden-xs pull-right">
+      <a href class="btn no-shadow navbar-btn" ng-click="app.settings.asideFolded = !app.settings.asideFolded">
+        <i class="fa {{app.settings.asideFolded ? 'fa-indent' : 'fa-dedent'}} fa-fw"></i>
+      </a>
+    </div>
+
+            <!-- settings -->
+        <div class="nav navbar-nav hidden-xs pull-right">
+          <button class="btn no-shadow navbar-btn " ui-toggle-class="active" target=".settings" style="background-color: transparent;">
+            <i class="fa fa-gear"></i>
+          </button>
+        </div>
+  </div>
+</div>

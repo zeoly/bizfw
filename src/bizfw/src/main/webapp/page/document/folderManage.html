@@ -1,0 +1,54 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="folderCtrl">
+  <!-- treePart -->
+  <div class="col bg-light b-r bg-auto">
+    <!-- headingPart -->
+    <div class="wrapper dker b-b">
+      <h4 class="m-n font-normal">
+        文件夹管理
+        <a class="pull-right btn-xs btn-dark" tooltip-placement="bottom-right" uib-tooltip="展开" ng-click="collhide?collapseAll():expandAll()"><span class="glyphicon" ng-class="{'glyphicon-folder-open': collhide,'glyphicon-folder-close': !collhide}"></span>
+        </a>
+      </h4>  
+    </div>
+    <!-- /headingPart -->
+    <div ui-tree="treeOptions" id="tree-root" data-empty-placeholder-enabled="false">
+      <ol ui-tree-nodes ng-model="folderdata">
+        <li ng-repeat="node in folderdata" ui-tree-node data-nodrag ng-include="'folderTree'"></li>
+      </ol>
+    </div>
+  </div>
+  <!-- /treePart -->
+  <div class="col">
+    <div class="wrapper bg-light dk b-b">
+      <h4 class="m-n font-thin">文件夹权限</h4>   
+    </div>
+    <div class="wrapper">
+      <form>
+        <div class="form-group">
+          <label>文件夹路径</label>
+          <input ng-model="folder.path" type="text"  ng-disabled="true" class="input-sm form-control">
+        </div>
+        <div class="form-group">
+          <label>角色权限{{selectedRole}}</label>
+          <ui-select multiple ng-model="role.selected" title="选择角色" >
+            <ui-select-match placeholder="点击选择对应角色">{{$item.name}}</ui-select-match>
+            <ui-select-choices repeat="role in roledata ">
+              <div>{{role.name}}</div>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+        <div class="m-t-md m-b-md">
+          <button class="btn btn-sm btn-info m-r-xs" ng-click="saveSelected()">保存</button>
+          <button class="btn btn-sm btn-info">取消</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="folderInfoDialog">
+  <div ng-include="'page/document/folderInfo.html'"></div>
+</script>
+<script type="text/ng-template" id="folderTree">
+  <div ng-include="'page/document/folderTree.html'"></div>
+</script>
+<script src="js/document/folderManage.js"></script>

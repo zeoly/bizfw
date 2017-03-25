@@ -1,0 +1,59 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="menuCtrl">
+  <!-- treePart -->
+  <div class="col bg-light b-r bg-auto">
+    <div class="wrapper dker b-b">
+      <h4 class="m-n font-normal">菜单管理
+        <a class="pull-right btn-xs btn-dark" tooltip-placement="bottom-right" uib-tooltip="展开" ng-click="collhide?collapseAll():expandAll()"><span class="glyphicon" ng-class="{'glyphicon-folder-open': collhide,'glyphicon-folder-close': !collhide}"></span>
+        </a>
+      </h4>
+    </div>
+    <div class="vbox">
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <div class="cell-inner">
+            <div ui-tree="treeOptions" id="tree-root" data-empty-placeholder-enabled="false">
+              <ol ui-tree-nodes ng-model="data">
+                <li ng-repeat="node in data" ui-tree-node data-nodrag ng-include="'menuTree'"></li>
+              </ol>
+            </div>  
+          </div>    
+        </div>   
+      </div>
+    </div>
+  </div>
+  <!-- /treePart -->
+  <div class="col">
+    <div class="wrapper bg-light dk b-b">
+      <h4 class="m-n font-thin">菜单设置</h3>
+      </div>
+      <div class="wrapper">
+        <form>
+          <div class="form-group">
+            <label for="uplevel">上级菜单</label>
+            <input type="text" ng-disabled="true" class="input-sm form-control" ng-model="parentMenu.name">
+          </div>
+          <div class="form-group">
+            <label>菜单名称</label>
+            <input ng-model="menu.name" type="text" placeholder="请输入菜单名称" class="input-sm form-control">
+          </div>
+          <div class="form-group">
+            <label>URL</label>
+            <input ng-model="menu.url" type="text" placeholder="请输入菜单名称" class="input-sm form-control">
+          </div>
+          <div class="form-group">
+            <label>序号</label>
+            <input ng-model="menu.orders" type="text" placeholder="请输入序号" class="input-sm form-control">
+          </div>
+          <div class="m-t-md m-b-md">
+            <button class="btn btn-sm btn-info m-r-xs" ng-click="saveMenu()">保存</button>
+            <button class="btn btn-sm btn-info">取消</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/ng-template" id="menuTree">
+    <div ng-include="'page/auth/menuTree.html'"></div>
+  </script>
+  <script type="text/javascript" src="js/auth/menuManage.js"></script>

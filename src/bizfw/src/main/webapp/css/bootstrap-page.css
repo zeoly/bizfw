@@ -1,0 +1,16 @@
+.navbar-brand {
+font-family:微软雅黑;
+font-weight: bold;
+font-size: 1.5em;
+}
+
+.navbar-nav{
+font-family:arial,微软雅黑;
+font-size: 16px;
+}
+
+.touxiang{
+width: 30px;
+height: 30px;
+margin: -5px 10px -5px 0;
+}

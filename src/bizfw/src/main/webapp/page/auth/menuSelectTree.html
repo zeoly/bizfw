@@ -1,0 +1,12 @@
+<div ui-tree-handle class="angular-ui-tree-node tree-node-content">
+	<a class="btn btn-xs" data-nodrag ng-click="(!node.childList || node.childList.length == 0)? return : toggle(this)">
+		<span class="glyphicon"
+			ng-class="{'glyphicon-plus': collapsed && node.childList && node.childList.length > 0, 'glyphicon-list-alt': !node.childList || node.childList.length == 0,'glyphicon-minus': !collapsed && node.childList && node.childList.length > 0}"></span>
+	</a>
+		<input type="checkbox" ng-model="node.isSelected" ng-checked="node.isSelected" ng-change="updateMenuSelection(node)"/>
+	<a class="text-overflow" ng-click="updateMenuSelection(node)">{{node.name}}</a>
+
+</div>
+<ol ui-tree-nodes="" ng-model="node.childList" ng-class="{hidden: collapsed}">
+	<li ng-repeat="node in node.childList" ui-tree-node ng-include="'menuSelectTree'"></li>
+</ol>

@@ -1,0 +1,41 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="privilegeCtrl">
+  <!-- treePart -->
+  <div class="col w-xxl bg-light b-r bg-auto">
+    <!-- headingPart -->
+    <div class="wrapper dker b-b">
+      <h4 class="m-n font-normal">角色列表</h4>
+    </div>
+    <!-- /headingPart -->
+    <div ng-repeat="node in roledata" class="angular-ui-tree-node tree-node-content angular-ui-tree-handle">
+      <a class="btn btn-xs">
+        <span class="glyphicon glyphicon-user">
+        </span>
+      </a>
+      <a class="text-overflow" ng-click="showPrivilegeDetail(node)">{{node.name}}</a>
+    </div>
+  </div>
+  <!-- /treePart -->
+  <div class="col">
+    <div class="wrapper bg-light dk b-b">
+      <h4 class="m-n font-thin">菜单权限设置</h4>
+    </div>
+    <!-- fields -->
+    <div class="wrapper">
+      <div ui-tree="treeOptions" id="tree-root2" data-empty-placeholder-enabled="false">
+        <ol ui-tree-nodes ng-model="menudata">
+          <li ng-repeat="node in menudata" ui-tree-node data-nodrag ng-include="'menuSelectTree'"></li>
+        </ol>
+      </div>
+      <div class="m-t-md m-b-md">
+        <button class="btn btn-sm btn-info m-r-xs" ng-disabled="!role" ng-click="saveSelectedMenu()">保存</button>
+        <button class="btn btn-sm btn-info">取消</button>
+      </div>
+    </div>
+    <!-- / fields -->
+  </div>
+</div>
+
+<script type="text/ng-template" id="menuSelectTree">
+  <div ng-include="'page/auth/menuSelectTree.html'"></div>
+</script>
+<script type="text/javascript" src="js/auth/rolePrivilege.js"></script>

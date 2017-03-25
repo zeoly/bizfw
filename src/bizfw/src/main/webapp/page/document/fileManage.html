@@ -1,0 +1,94 @@
+<!-- LJBF part -->
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="FileCtrl">
+	<div class="col w-xxl bg-light b-r bg-auto">
+		<div class="wrapper dker b-b">
+			<h4 class="m-n font-normal">
+				文件路径 <a class="pull-right btn-xs btn-dark"
+				tooltip-placement="top-right" uib-tooltip="展开"
+				ng-click="collhide?collapseAll():expandAll()"><span
+				class="glyphicon"
+				ng-class="{'glyphicon-folder-open': collhide,'glyphicon-folder-close': !collhide}"></span>
+			</a>
+		</h4>
+	</div>
+	<div class="m-t-xs"></div>
+	<div ui-tree="treeOptions" id="tree-root">
+		<ol ui-tree-nodes ng-model="folderdata">
+			<li ng-repeat="node in folderdata" ui-tree-node data-nodrag
+			ng-include="'folderAuthTree'"></li>
+		</ol>
+	</div>
+</div>
+<!-- /LJBF part -->
+<!-- /WJBF part -->
+<div class="col">
+	<div class="wrapper dker b-b">
+		<h4 class="m-n font-normal">文件管理</h4>
+	</div>
+	<div class="m-l-xs m-xs">
+		<button class="btn btn-info btn-sm" ng-disabled="!currFolder||f.progress" type="file" ngf-select="addFile($file, $invalidFiles)">选择文件</button>
+		 <span style="font:smaller" ng-show="f.progress">文件:{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+      <span class="progress" ng-show="f.progress >= 0">
+          <span style="width:{{f.progress}}%"  
+               ng-bind="f.progress + '%'"></span>
+      </span>
+  </span>     
+	</div>
+	<!--文件夹和文件视图-->
+<!-- 	<div class="web-explorer panel panel-default">
+	<div class="panel-body">
+		<div class="explorer-view">
+			<dl ng-repeat="item in ffData">
+				<dt ng-click="openFolder(data.path + '/' + item.name)" ng-if="item.type==0">
+					<i class="fa fa-folder-o fa-5x"></i> <b>{{ item.name }}</b>
+				</dt>
+				<dt ng-click="openFile(item)" ng-if="item.type==1">
+					<i class="fa fa-5x" ng-class="item.ext"></i> 
+					<b>{{ item.name}}</b>
+					<a ng-href="fileAction/downloadFile.do?fileId={{item.idBfDocument}}"><i class="fa fa-download"></i></a>
+					</dt>
+				</dl>
+			</div> -->
+<div class="web-explorer panel panel-default">
+	<div class="panel-body">
+	<div ng-if="!ffData||ffData.length==0">
+	该文件夹为空
+	</div>
+<!--文件夹和文件视图2-->
+  <ul class="list-group">
+    <li ng-repeat="item in ffData" class="list-group-item">
+      <div class="item-tit">
+        <div class="thumb" ng-click="getfileList(item)"><i class="fa fa-3x" ng-class="item.ext"></i> </div>
+        <div class="info">
+          <span class="tit" ng-show="!item.editing">{{item.name}}</span>
+          <input class="form-control m-t-sm" type="text" ng-show="item.editing" ng-blur="doneEditing(item)" ng-model="item.modifyName" ui-focus="item.editing">
+        </div>
+      </div>
+      <div class="item-info">
+        <span class="item-info-list">
+          <span class="mod-act-list" ng-if="item.extension">
+            <a hidefocus="on" tabindex="0" class="act-list" ng-href="fileAction/downloadFile.do?fileId={{item.idBfDocument}}"><i class="fa fa-download fa-1x5" uib-tooltip="下载"></i></a>
+<!--             <a data-function="move" hidefocus="on" tabindex="0" class="act-list" title="移动" href="#"><i class="fa fa-move"></i></a> -->
+            <a hidefocus="on" tabindex="0" class="act-list" ng-click="deleteFile(item)"><i class="fa fa-trash fa-1x5"  uib-tooltip="删除"></i></a>
+            <a hidefocus="on" tabindex="0" class="act-list" type="file" ngf-select="updateFile($file, $invalidFiles, item)"><i class="fa fa-refresh fa-1x5"  uib-tooltip="更新文件版本"></i></a>
+            <a hidefocus="on" tabindex="0" class="act-list" ng-click="editFile(item)"><i class="fa fa-edit fa-1x5" uib-tooltip="修改文件名"></i></a>                </span>
+          </span>
+          <span data-action="enter" class="item-info-list item-info-size" ng-show="item.extension">{{item.fSize}}</span>
+          <span data-action="enter" class="item-info-list">
+            <span class="txt txt-time">{{item.updateDate}}</span>
+          </span>
+        </div>
+      </li>
+    </ul>
+
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<script type="text/ng-template" id="folderAuthTree">
+	<div ng-include="'page/document/folderAuthTree.html'"></div>
+</script>
+<script type="text/ng-template" id="fileHistoryDialog">
+	<div ng-include="'page/document/fileHistory.html'"></div>
+</script>

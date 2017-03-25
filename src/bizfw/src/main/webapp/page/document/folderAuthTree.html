@@ -1,0 +1,10 @@
+<div ui-tree-handle class="angular-ui-tree-node tree-node-content">
+	<a class="btn btn-xs" data-nodrag ng-click="(!node.childList || node.childList.length == 0)? return : toggle(this)">
+		<span class="glyphicon"
+			ng-class="{'glyphicon-plus': collapsed && node.childList && node.childList.length > 0, 'glyphicon-home': !node.childList || node.childList.length == 0,'glyphicon-minus': !collapsed && node.childList && node.childList.length > 0}"></span>
+	</a>
+	<a class="text-overflow" ng-click="getfileList(node)">{{node.name}}</a>
+</div>
+<ol ui-tree-nodes="" ng-model="node.childList" ng-class="{hidden: collapsed}">
+	<li ng-repeat="node in node.childList" ui-tree-node ng-include="'folderAuthTree'"></li>
+</ol>
