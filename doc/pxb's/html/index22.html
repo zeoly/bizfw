@@ -1,0 +1,199 @@
+﻿<html>
+<!DOCTYPE html>
+
+<head>
+<title>我的第一个 HTML 页面</title>
+我们已经为图像规定了一个相对地址
+<!--我们已经为图像规定了一个相对地址印base 元素的 target 属性?->
+<base href="http://www.w3school.com.cn/i/" />
+<base target="_blank" />
+--></head>
+
+<!--标题测试 <body background="img/logo.png">-->
+<body bgcolor="MintCream">
+<a href="#tiip">标题测试</a>
+<h1>h1</h1>
+<h2>h2</h2>
+<h3>h3</h3>
+<h4>h4</h4>
+<h5>h5</h5>
+<h6>h6</h6>
+<p>我是<br>分割线</p>
+<hr>
+<!--格式化测试，HTML 外、内联元素，外联元素一般会以新行开始-->
+<p>Normal text 123 test!</p>
+<big>big</big>
+<small>small</small>
+<b> bold</b>
+<strong>strong</strong>
+<em>emphasized</em>
+<i>italic</i>
+<ins>insert</ins>
+<del>delete</del>
+<br />
+This contains
+<sub>subscript</sub>
+<br />
+This contains
+<sup>superscript</sup>
+<br />
+<p><cite>Ajahn Chah</cite> once said <q>If it isn't good, let it die. </q></p>
+<p>The <abbr title="People's Republic of China">PRC</abbr> was founded in 1949.</p>	
+<pre>
+<tt>tt</tt>
+<samp>samp</samp>
+<var>var</var>
+<code>
+for i =1 to n 
+</code>
+press <kbd>menu</kbd>
+</pre>
+<address>
+Written by <a href="mailto:webmaster@example.com">Donald Duck</a>.<br> 
+</address>
+<bdo dir="rtl">Here is some text</bdo>
+<q>Here is a short quotation here is a short quotation</q>
+<blockquote>
+<p>here is a long quotation here is a long quotation</p>
+</blockquote>
+<!--链接测试-->
+<p>图像 <img src="img/logo.png" width="50" height="50" align="left"> 在文本中</p>
+<p>图像 <img src ="img/logo.png" width="50" height="50" align="middle"> 在文本中</p>
+<p>图像 <img src ="img/logo.png" width="50" height="50" align="right"> 在文本中</p>
+<a href="http://www.tylin.com.cn"  accesskey="h" ><img src ="img/logo.png" width="50" height="50" align="middle"></a>
+<a href="http://www.tylin.com.cn"  target="_blank" >新窗口链接</a>
+<p name='Bill "HelloWorld" Gates' >为元素添加属性名称需要加引号</p>
+<p>The <abbr title="People's Republic of China">PRC</abbr> was founded in 1949.</p>	
+<img src="planets.jpg" border="0" usemap="#planetmap" alt="Planetsabc" />
+<p>title 元素的内容会显示在浏览器的标题栏中。</p>
+
+<caption>我的标题</caption>
+<table border="5" bgcolor="CornflowerBlue" >
+ <tr>
+  <th align="left" bgcolor="red">消费项目....</th>
+  <th align="right">一月</th>
+  <th align="right">二月</th>
+ </tr>
+ <tr>
+  <td align="left">衣服</td>
+  <td align="right">$241.10</td>
+  <td align="right">$50.20</td>
+ </tr>
+ <tr>
+  <td align="left">化妆品</td>
+  <td align="right">$30.00</td>
+  <td align="right">$44.45</td>
+ </tr>
+ <tr>
+  <td align="left">食物</td>
+  <td align="right">$730.40</td>
+  <td align="right">$650.00</td>
+ </tr>
+ <tr>
+  <th align="left">总计</th>
+  <th align="right">$1001.50</th>
+  <th align="right">$744.65</th>
+ </tr>
+</table>
+
+<ul type="disc">
+<li>Coffee</li>
+<li>Milk</li>
+<ol type="A">
+<li>Coffee</li>
+<li>Milk</li>
+</ol>
+<li>John</li>
+<dl>
+   <dt>计算机</dt>
+   <dd>用来计算的仪器 ... ...</dd>
+   <dt>显示器</dt>
+   <dd>以视觉方式显示信息的装置 ... ...</dd>
+</dl>
+</ul>
+
+<!--表单输入-->
+<form>
+First name: 
+<input type="text" name="firstname" />
+<br />
+Last name: 
+<input type="text" naMe="lastname" />
+<input type="button" value="Hello world!">
+</form>
+
+<form>
+<input type="radio" name="sex" checked="checked" value="male" /> Male
+<br />
+<input type="radio" name="sex" value="female" /> Female
+</form>
+
+<form>
+<input type="checkbox" checked="checked" name="bike" />
+I have a bike
+<br />
+<input type="checkbox" checked="checked" name="car" />
+I have a car
+</form>
+
+<form>
+<select name="cars">
+<option value="volvo">Volvo</option>
+<option value="saab">Saab</option>
+<option value="fiat" selected="selected">Fiat</option>
+<option value="audi">Audi</option>
+</select>
+</form>
+
+<input type="text" name="coursename_add" size="30"  
+    class="gray"                                                  //开始默认值字体为灰色
+    value="-----请您输入要修改科目的流水号-----"                         //这是你要设置的默认值
+    onfocus="if(this.value==defaultValue){this.value='';this.className='black'}" //当点击输入框的时 清除默认值，输入的字体为黑色
+     onblur="if(!value){this.value=defaultValue;this.className='gray'}"/>        //当输入框没输入文字时  光标离开输入框  又变回默认值
+<br />
+<iframe src="index.html" width="1000" height="200" name="iframe_a"></iframe>
+<p><a href="http://www.tylin.com.cn" target="iframe_a">tylin.com.cn</a></p>
+
+<article id="tiip" accesskey="g">
+  <h1>Internet Explorer 9</h1>
+  <p>Windows Internet Explorer 9（简称 IE9）于 2011 年 3 月 14 日发布.....</p>
+</article>
+
+<script type="text/javascript">
+document.write("Hello World!")
+</script>
+<noscript>Sorry, your browser does not support JavaScript!</noscript>
+
+<blockquote>
+Here is a long quotation here is a long quotation here is a long quotation 
+here is a long quotation here is a long quotation here is a long quotation 
+here is a long quotation here is a long quotation here is a long quotation.
+</blockquote>
+</body>
+
+<div id="searchform">Search form components go here. This
+section of the page is unique.</div>
+<div class="blogentry">
+   <h2>Today's blog post</h2>
+   <p>Blog content goes here.</p>
+   <p>Here is another paragraph of blog content.</p>
+   <p>Just as there can be many paragraphs on a page, so too
+   there may be many entries in a blog. A blog page could use
+   multiple instances of the class "blogentry" (or any other
+   class).</p>
+</div>
+
+<div class="blogentry">
+   <h2>Yesterday's blog post</h2>
+   <p>In fact, here we are inside another div of class
+   "blogentry."</p>
+   <p>They reproduce like rabbits.</p>
+   <p>If there are ten blog posts on this page, there might
+   be ten divs of class "blogentry" as well.</p>
+</div>
+
+
+<a href="index.html"
+target="_top">请点击这里跳出框架！</a> 
+
+</html>

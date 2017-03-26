@@ -1,0 +1,27 @@
+body {
+	background-image: 
+background-image: url('img/BGP.png');
+background-repeat: no-repeat;
+background-position:top;
+background-attachment: fixed;
+}
+
+p {
+border-style: solid dotted dashed double;
+border-width:thin;
+
+  color: red;
+  font-family: arial;
+}
+
+div {
+	width: 500px;
+	border-top: 50px solid red;
+	border-right: 50px solid green;
+	border-bottom: 50px solid black;
+	border-left:50px solid blue;
+	margin: auto;
+}
+.logo{
+width: 400px;
+}
