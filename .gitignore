@@ -1,2 +1,4 @@
 *.bak
 *.class
+.tern-project
+target
