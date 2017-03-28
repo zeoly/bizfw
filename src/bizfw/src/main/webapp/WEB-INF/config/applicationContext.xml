@@ -58,7 +58,7 @@
 	</bean>
 	<tx:annotation-driven transaction-manager="txManager" proxy-target-class="true" />
 
-	<context:component-scan base-package="com.thinkequip.bizfw" use-default-filters="false">
+	<context:component-scan base-package="com.thinkequip.bizfw">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
