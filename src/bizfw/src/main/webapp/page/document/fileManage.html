@@ -60,7 +60,7 @@
       <div class="item-tit">
         <div class="thumb" ng-click="getfileList(item)"><i class="fa fa-3x" ng-class="item.ext"></i> </div>
         <div class="info">
-          <span class="tit" ng-show="!item.editing">{{item.name}}</span>
+          <span class="tit" ng-show="!item.editing" ng-click="getfileList(item)">{{item.name}}</span>
           <input class="form-control m-t-sm" type="text" ng-show="item.editing" ng-blur="doneEditing(item)" ng-model="item.modifyName" ui-focus="item.editing">
         </div>
       </div>
