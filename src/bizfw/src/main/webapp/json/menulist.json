@@ -1,0 +1,48 @@
+{"menuListData":[
+  {
+    "menuCode": 1,
+    "menuName": "系统管理",
+    "menuUrl": "app.",
+    "childMenuList": [{
+      "menuCode": 11,
+      "menuName": "组织架构",
+      "menuUrl":"app.poManage",
+      "childMenuList": []
+    },{
+      "menuCode": 12,
+      "menuName": "角色管理",
+      "menuUrl":"app.roleManage",
+      "childMenuList": []
+    },{
+      "menuCode": 13,
+      "menuName": "菜单配置",
+      "menuUrl":"app.menuManage",
+      "childMenuList": []
+    },{
+      "menuCode": 14,
+      "menuName": "角色权限管理",
+      "menuUrl":"app.rolePrivilege",
+      "childMenuList": []
+    }]
+  }, {
+    "menuCode": 2,
+    "menuName": "文件管理",
+    "menuUrl": "app.",
+    "childMenuList": [{
+      "menuCode": 21,
+      "menuName": "路径管理",
+      "menuUrl":"app.folderManage",
+      "childMenuList": []
+    },{
+      "menuCode": 21,
+      "menuName": "文件协作",
+      "menuUrl":"app.fileManage",
+      "childMenuList": []
+    }]
+  },{
+    "menuCode": 3,
+    "menuName": "测试菜单",
+    "menuUrl": "app.fileManage",
+    "childMenuList": []
+  }
+]}
