@@ -1,0 +1,41 @@
+<!-- list -->
+<ul class="nav">
+ <!-- dynamic menu -->
+	<li ng-repeat="menutree in menuListData">
+		<a class="auto" ui-sref="{{menutree.menuUrl}}">      
+			<span ng-if="menutree.childMenuList.length!=0" class="pull-right text-muted">
+				<i class="fa fa-fw fa-angle-right text"></i>
+				<i class="fa fa-fw fa-angle-down text-active"></i>
+			</span>
+			<i class="glyphicon glyphicon-th-large icon text-success"></i>
+			<span class="font-bold">{{menutree.menuName}}</span>
+		</a>
+		<ul class="nav nav-sub dk">
+			<li ng-repeat="menuleaf in menutree.childMenuList" ui-sref-active="active">
+				<a ui-sref="{{menuleaf.menuUrl}}">
+					<span>{{menuleaf.menuName}}</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+<!-- / dynamic menu -->
+
+
+
+	 <!-- icon Management -->
+<li nav nav-sub dk>
+  <a href="http://120.76.240.143/funing/index.html">
+    <i class="glyphicon glyphicon-globe"></i>
+    <span">BIM全景模块</span>
+  </a>
+</li>
+<!--   
+  <li nav nav-sub dk>
+  <a href="http://120.76.240.143/qiaoping11/index.html">
+    <i class="glyphicon glyphicon-globe"></i>
+    <span">BIM全景模块2</span>
+  </a>
+</li> -->
+	 <!-- / File Management -->
+</ul>
+<!-- / list -->

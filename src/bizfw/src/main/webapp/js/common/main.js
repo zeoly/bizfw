@@ -2,8 +2,8 @@
 
 /* Controllers */
 
-angular.module('app').controller('AppCtrl', ['$scope', '$localStorage', '$window', '$uibModal',
-  function($scope, $localStorage, $window, $uibModal) {
+angular.module('app').controller('AppCtrl', ['$scope', '$localStorage', '$window', '$uibModal','$http',
+  function($scope, $localStorage, $window, $uibModal,$http) {
     // add 'ie' classes to html
     var isIE = !!navigator.userAgent.match(/MSIE/i);
     isIE && angular.element($window.document.body).addClass('ie');
@@ -141,10 +141,19 @@ angular.module('app').controller('AppCtrl', ['$scope', '$localStorage', '$window
         }
       });
     };
-
+    $scope.conlog = function(scope) {
+        console.log(scope);
+      };
     $scope.getmenulist();
-
-
+    $scope.menuListData=[];
+    $http.get("json/menulist.json").success(function(data) {
+        $scope.menuListData = data.menuListData;
+        $scope.conlog($scope.menuListData);
+        $scope.menuListData.forEach(function(e){$scope.conlog(e)});
+    });
+    
+    $scope.menuListData.forEach(function(e){$scope.conlog(e)});
+      
   }
 ]);
 
