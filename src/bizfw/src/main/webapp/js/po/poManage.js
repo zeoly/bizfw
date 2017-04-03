@@ -56,7 +56,6 @@ app.controller('DeptCtrl', ['$scope', 'uiGridConstants', '$uibModal', '$log', fu
 			},
 			success: function(data) {
 				$scope.peopleData = data;
-				console.log('complete');
 			}
 		});
 	};

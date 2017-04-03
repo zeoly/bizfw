@@ -9,14 +9,19 @@ import javax.annotation.Resource;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.thinkequip.bizfw.base.BaseDao;
+import com.thinkequip.bizfw.base.model.BaseModel;
 
-public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
+public class BaseDaoImpl<T extends BaseModel> extends HibernateDaoSupport implements BaseDao<T> {
 
 	@Resource
 	private SessionFactory sessionFactory;
+
+	@Resource
+	private RedisTemplate<String, T> redisTemplate;
 
 	private Class<T> clazz;
 
@@ -84,10 +89,10 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 
 	@Override
 	public long getCountByFieldAndValue(String field, Object value) {
-		String hql = "select count(0) from " + getTableName() + " as t where t." + field + " = :value";
+		String hql = "select from " + getTableName() + " as t where t." + field + " = :value";
 		Query<T> query = createQuery(hql);
 		query.setParameter("value", value);
-		return ((Number) query.getSingleResult()).longValue();
+		return query.getFetchSize().longValue();
 	}
 
 	public T load(String id) {
@@ -118,6 +123,16 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	@Resource
 	public void setMySessionFactory(SessionFactory sessionFactory) {
 		this.setSessionFactory(sessionFactory);
+	}
+
+	@Override
+	public T redisGet(String id) {
+		return redisTemplate.opsForValue().get(id);
+	}
+
+	@Override
+	public void redisSet(String id, T t) {
+		redisTemplate.opsForValue().set(id, t);
 	}
 
 }

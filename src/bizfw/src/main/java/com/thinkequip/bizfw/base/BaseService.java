@@ -2,6 +2,8 @@ package com.thinkequip.bizfw.base;
 
 import java.util.List;
 
+import com.thinkequip.bizfw.base.model.BaseModel;
+
 /**
  * 框架基础服务接口
  * 
@@ -11,7 +13,7 @@ import java.util.List;
  * @param <T>
  *            维护对象
  */
-public interface BaseService<T> {
+public interface BaseService<T extends BaseModel> {
 
 	/**
 	 * 保存操作
@@ -71,6 +73,24 @@ public interface BaseService<T> {
 	 *             业务异常
 	 */
 	public void checkObjectNotNull(Object object, String target, String operation) throws BizfwServiceException;
+
+	/**
+	 * 保存并放入cache
+	 * 
+	 * @param t
+	 *            维护对象
+	 * @return 主键
+	 */
+	public String saveWithCache(T t);
+
+	/**
+	 * 先查询cache，没有则查db并放入cache
+	 * 
+	 * @param id
+	 *            主键
+	 * @return 维护对象
+	 */
+	public T queryByIdWithCache(String id);
 
 	/**
 	 * 获取对象对应dao
