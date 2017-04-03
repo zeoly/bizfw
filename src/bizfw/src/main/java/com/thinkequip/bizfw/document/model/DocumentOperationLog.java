@@ -36,7 +36,7 @@ public class DocumentOperationLog extends BaseModel {
 	/** 主键 */
 	@Id
 	@Column(name = "id_bf_document_opt_log")
-	@GenericGenerator(name = "uuid", strategy = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
 	@GeneratedValue(generator = "uuid")
 	private String idBfDocumentOptLog;
 
