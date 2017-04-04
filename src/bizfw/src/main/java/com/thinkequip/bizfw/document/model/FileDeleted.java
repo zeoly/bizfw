@@ -18,7 +18,7 @@ public class FileDeleted extends BaseModel {
 
 	@Id
 	@Column(name = "id_bf_file_deleted")
-	@GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+	@GenericGenerator(name = "uuid", strategy = "uuid")
 	@GeneratedValue(generator = "uuid")
 	private String idBfFileDeleted;
 
