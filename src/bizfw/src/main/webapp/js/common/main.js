@@ -98,62 +98,19 @@ angular.module('app').controller('AppCtrl', ['$scope', '$localStorage', '$window
     $scope.navXtglArray = ['系统管理', '组织架构', '角色管理', '菜单配置', '角色权限管理'];
     $scope.navWjglArray = ['文件管理', '路径管理', '文件协作'];
 
+    $scope.menuListData=[];
+
     $scope.getmenulist = function() {
       $.ajax({
         url: $scope.getBaseUrl('/menuAction/getMenuTree.do'),
         async: false,
         type: 'POST',
         success: function(data) {
-          for (var i = 0; i < data.length; i++) {
-            if (data[i].name=='系统管理') {
-              $scope.nav.xtgl = true;
-              if (data[i].childList&&data[i].childList.length!=0) {
-                for (var j = 0; j < data[i].childList.length; j++) {
-                  if (data[i].childList[j].name=='组织架构') {
-                    $scope.nav.zzjg = true;
-                  }
-                  if (data[i].childList[j].name=='角色管理') {
-                    $scope.nav.jsgl = true;
-                  }
-                  if (data[i].childList[j].name=='菜单配置') {
-                    $scope.nav.cdpz = true;
-                  }
-                  if (data[i].childList[j].name=='角色权限管理') {
-                    $scope.nav.jsqxgl = true;
-                  }
-                }
-              }
-            }
-            if (data[i].name=='文件管理') {
-              $scope.nav.wjgl = true;
-              if (data[i].childList&&data[i].childList.length!=0) {
-                for (var j = 0; j < data[i].childList.length; j++) {
-                  if (data[i].childList[j].name=='路径管理') {
-                    $scope.nav.ljgl = true;
-                  }
-                  if (data[i].childList[j].name=='文件协作') {
-                    $scope.nav.wjxz = true;
-                  }
-                }
-              }
-            }
-          }
+        	$scope.menuListData = data;
         }
       });
     };
-    $scope.conlog = function(scope) {
-        console.log(scope);
-      };
-    $scope.getmenulist();
-    $scope.menuListData=[];
-    $http.get("json/menulist.json").success(function(data) {
-        $scope.menuListData = data.menuListData;
-        $scope.conlog($scope.menuListData);
-        $scope.menuListData.forEach(function(e){$scope.conlog(e)});
-    });
-    
-    $scope.menuListData.forEach(function(e){$scope.conlog(e)});
-      
+    $scope.getmenulist();     
   }
 ]);
 
