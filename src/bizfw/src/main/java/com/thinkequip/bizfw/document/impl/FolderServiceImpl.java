@@ -119,6 +119,28 @@ public class FolderServiceImpl extends BaseServiceImpl<Document> implements Fold
 		documentOptLogService.addLog(document, DocumentOperationLog.OPT_DEL);
 	}
 
+	@Override
+	public void setRoleOfFolder(Document folder, List<String> roleIdList) throws BizfwServiceException {
+		roleDocumentRelDao.deleteByFieldAndValue(RoleDocumentRelation.COLUMN_DOCUMENT_ID, folder.getIdBfDocument());
+		for (String roleId : roleIdList) {
+			RoleDocumentRelation relation = new RoleDocumentRelation(folder.getUpdateBy(), roleId,
+					folder.getIdBfDocument());
+			roleDocumentRelDao.save(relation);
+		}
+	}
+
+	@Override
+	public List<Role> getRoleOfFolder(Document folder) throws BizfwServiceException {
+		List<Role> roleList = new ArrayList<Role>();
+		List<RoleDocumentRelation> relationList = roleDocumentRelDao
+				.queryByFieldAndValue(RoleDocumentRelation.COLUMN_DOCUMENT_ID, folder.getIdBfDocument());
+		for (RoleDocumentRelation relation : relationList) {
+			Role role = roleService.queryById(relation.getIdBfRole());
+			roleList.add(role);
+		}
+		return roleList;
+	}
+
 	/**
 	 * 转换文档列表为文档树接口
 	 * 
@@ -158,7 +180,7 @@ public class FolderServiceImpl extends BaseServiceImpl<Document> implements Fold
 			}
 		}
 	}
-	
+
 	private List<Document> replenishParentFolder(Document childFolder) throws BizfwServiceException {
 		List<Document> parentFolderList = new ArrayList<Document>();
 		while (StringUtils.isNotEmpty(childFolder.getOwnerDocumentId())) {
@@ -183,7 +205,7 @@ public class FolderServiceImpl extends BaseServiceImpl<Document> implements Fold
 			}
 		}
 	}
-	
+
 	/**
 	 * 检查文件夹是否可删除
 	 * 
@@ -197,9 +219,10 @@ public class FolderServiceImpl extends BaseServiceImpl<Document> implements Fold
 			throw new BizfwServiceException(ErrorCode.Doc.Folder.DEL_FAIL_WITH_CHILD);
 		}
 	}
-	
+
 	@Override
 	public BaseDao<Document> getBaseDao() {
 		return folderDao;
 	}
+
 }

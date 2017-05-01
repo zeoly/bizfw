@@ -72,4 +72,23 @@ public interface FolderService extends BaseService<Document> {
 	 * @throws BizfwServiceException
 	 */
 	public void deleteFolder(String documentId) throws BizfwServiceException;
+
+	/**
+	 * 设置文件夹的角色权限
+	 * 
+	 * @param folder
+	 * @param roleIdList
+	 * @throws BizfwServiceException
+	 */
+	public void setRoleOfFolder(Document folder, List<String> roleIdList) throws BizfwServiceException;
+
+	/**
+	 * 获取文件夹关联角色列表
+	 * 
+	 * @param folder
+	 *            文档
+	 * @return 角色列表
+	 * @throws BizfwServiceException
+	 */
+	public List<Role> getRoleOfFolder(Document folder) throws BizfwServiceException;
 }

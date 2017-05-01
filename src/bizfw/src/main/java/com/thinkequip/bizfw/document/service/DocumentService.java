@@ -102,7 +102,6 @@ public interface DocumentService extends BaseService<Document> {
 	 * @param roleIdList
 	 * @throws BizfwServiceException
 	 */
-	@Deprecated
 	public void setRoleOfFolder(Document folder, List<String> roleIdList) throws BizfwServiceException;
 
 	/**
