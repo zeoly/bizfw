@@ -12,6 +12,7 @@ import com.thinkequip.bizfw.document.model.Document;
  * @author zengyongli
  * @date 2017年3月19日
  */
+@Deprecated
 public interface DocumentDao extends BaseDao<Document> {
 
 	/**

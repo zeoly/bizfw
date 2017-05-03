@@ -110,12 +110,13 @@ public class FolderServiceImpl extends BaseServiceImpl<Document> implements Fold
 	}
 
 	@Override
-	public void deleteFolder(String documentId) throws BizfwServiceException {
+	public void deleteFolder(String documentId, People people) throws BizfwServiceException {
 		Document document = queryById(documentId);
 		checkObjectNotNull(document, "文件夹[" + documentId + "]", "删除文件夹");
 		checkCanDeleteFolder(document);
 		roleDocumentRelDao.deleteByFieldAndValue(RoleDocumentRelation.COLUMN_DOCUMENT_ID, documentId);
 		delete(documentId);
+		document.setUpdateBy(people.getCode());
 		documentOptLogService.addLog(document, DocumentOperationLog.OPT_DEL);
 	}
 

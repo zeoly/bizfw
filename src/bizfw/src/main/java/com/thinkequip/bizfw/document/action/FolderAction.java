@@ -15,7 +15,6 @@ import com.thinkequip.bizfw.auth.service.RoleService;
 import com.thinkequip.bizfw.base.BaseAction;
 import com.thinkequip.bizfw.base.BizfwServiceException;
 import com.thinkequip.bizfw.document.model.Document;
-import com.thinkequip.bizfw.document.model.RoleDocumentRelation;
 import com.thinkequip.bizfw.document.service.FolderService;
 import com.thinkequip.bizfw.po.model.People;
 
@@ -49,8 +48,9 @@ public class FolderAction extends BaseAction {
 
 	@ResponseBody
 	@RequestMapping("/deleteFolder.do")
-	public String deleteFolder(String documentId) throws BizfwServiceException {
-		folderService.deleteFolder(documentId);
+	public String deleteFolder(HttpServletRequest request, String documentId) throws BizfwServiceException {
+		People people = getLoginPeople(request);
+		folderService.deleteFolder(documentId, people);
 		return SUCCESS;
 	}
 

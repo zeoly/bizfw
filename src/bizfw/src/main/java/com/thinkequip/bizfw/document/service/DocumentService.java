@@ -16,6 +16,7 @@ import com.thinkequip.bizfw.po.model.People;
  * @author zengyongli
  * @date 2017年3月19日
  */
+@Deprecated
 public interface DocumentService extends BaseService<Document> {
 
 	/**
