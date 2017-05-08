@@ -30,6 +30,10 @@ public class Question extends BaseModel {
 	@GeneratedValue(generator = "uuid")
 	private String idBfQuestion;
 
+	/** 所属科目id */
+	@Column(name = "id_bf_subject")
+	private String subjectId;
+
 	/** 问题体 */
 	@Column(name = "question_body")
 	private String questionBody;
@@ -52,6 +56,14 @@ public class Question extends BaseModel {
 
 	public void setIdBfQuestion(String idBfQuestion) {
 		this.idBfQuestion = idBfQuestion;
+	}
+
+	public String getSubjectId() {
+		return subjectId;
+	}
+
+	public void setSubjectId(String subjectId) {
+		this.subjectId = subjectId;
 	}
 
 	public String getQuestionBody() {
