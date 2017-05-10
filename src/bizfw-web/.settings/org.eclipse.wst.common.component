@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="thinkequip-bizfw-1.0">
+    <wb-module deploy-name="bizfw-1.0">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/" source-path="/target/m2e-jee/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <dependent-module archiveName="bizfw-core-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bizfw-core/bizfw-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="thinkequip-exam-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/thinkequip-exam/thinkequip-exam">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/thinkequip-bizfw/target/classes"/>
-        <property name="context-root" value="thinkequip-bizfw"/>
+        <property name="context-root" value="bizfw-web"/>
     </wb-module>
 </project-modules>
