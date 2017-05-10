@@ -4,6 +4,9 @@
         <wb-resource deploy-path="/" source-path="/target/m2e-jee/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="bizfw-core-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bizfw-core/bizfw-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/thinkequip-bizfw/target/classes"/>
         <property name="context-root" value="thinkequip-bizfw"/>
     </wb-module>
