@@ -4,9 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.thinkequip.bizfw.base.BaseDao;
+import com.thinkequip.bizfw.base.BizfwServiceException;
 import com.thinkequip.bizfw.base.impl.BaseServiceImpl;
 import com.thinkequip.exam.dao.ExaminationPaperDao;
+import com.thinkequip.exam.dao.PaperQuestionDao;
 import com.thinkequip.exam.model.ExaminationPaper;
+import com.thinkequip.exam.model.PaperQuestion;
 import com.thinkequip.exam.service.ExaminationPaperService;
 
 /**
@@ -22,9 +25,24 @@ public class ExaminationPaperServiceImpl extends BaseServiceImpl<ExaminationPape
 	@Autowired
 	private ExaminationPaperDao examinationPaperDao;
 
+	@Autowired
+	private PaperQuestionDao paperQuestionDao;
+
 	@Override
 	public BaseDao<ExaminationPaper> getBaseDao() {
 		return examinationPaperDao;
+	}
+
+	@Override
+	public void addExaminationPaper(ExaminationPaper examinationPaper) throws BizfwServiceException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void addQuestion(PaperQuestion paperQuestion) throws BizfwServiceException {
+		// TODO Auto-generated method stub
+
 	}
 
 }

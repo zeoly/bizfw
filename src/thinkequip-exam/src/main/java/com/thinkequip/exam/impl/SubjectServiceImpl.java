@@ -26,14 +26,26 @@ public class SubjectServiceImpl extends BaseServiceImpl<Subject> implements Subj
 	private SubjectDao SubjectDao;
 
 	@Override
+	public BaseDao<Subject> getBaseDao() {
+		return SubjectDao;
+	}
+
+	@Override
 	public List<Subject> getAllSubject() throws BizfwServiceException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public BaseDao<Subject> getBaseDao() {
-		return SubjectDao;
+	public void addSubject(Subject subject) throws BizfwServiceException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void deleteSubject(Subject subject) throws BizfwServiceException {
+		// TODO Auto-generated method stub
+
 	}
 
 }

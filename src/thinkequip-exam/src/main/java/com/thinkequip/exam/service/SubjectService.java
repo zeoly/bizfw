@@ -22,4 +22,8 @@ public interface SubjectService extends BaseService<Subject> {
 	 * @throws BizfwServiceException
 	 */
 	public List<Subject> getAllSubject() throws BizfwServiceException;
+
+	public void addSubject(Subject subject) throws BizfwServiceException;
+
+	public void deleteSubject(Subject subject) throws BizfwServiceException;
 }
