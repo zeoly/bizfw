@@ -9,6 +9,7 @@
 	<build />
 	<modules>
 		<module>bizfw-core</module>
+		<module>bizfw-document</module>
 		<module>bizfw-web</module>
 		<module>thinkequip-exam</module>
 	</modules>
