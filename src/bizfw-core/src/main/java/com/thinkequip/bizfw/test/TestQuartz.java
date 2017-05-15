@@ -29,6 +29,7 @@ public class TestQuartz {
 			start = System.currentTimeMillis();
 			for (int i = 0; i < 10000; i++) {
 				String b = RedisUtils.get("a");
+				logger.info("b:" + b);
 			}
 			end = System.currentTimeMillis();
 			qqq = end - start;

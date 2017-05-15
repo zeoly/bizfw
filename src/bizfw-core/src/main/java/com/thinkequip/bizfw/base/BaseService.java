@@ -16,6 +16,13 @@ import com.thinkequip.bizfw.base.model.BaseModel;
 public interface BaseService<T extends BaseModel> {
 
 	/**
+	 * 获取所有记录
+	 * 
+	 * @return 记录列表
+	 */
+	public List<T> list();
+
+	/**
 	 * 保存操作
 	 * 
 	 * @param t

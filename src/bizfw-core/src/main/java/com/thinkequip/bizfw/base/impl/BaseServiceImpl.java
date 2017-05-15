@@ -17,6 +17,11 @@ public abstract class BaseServiceImpl<T extends BaseModel> implements BaseServic
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Override
+	public List<T> list() {
+		return getBaseDao().list();
+	}
+
+	@Override
 	public String save(T t) {
 		return getBaseDao().save(t);
 	}
