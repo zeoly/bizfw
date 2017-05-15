@@ -34,15 +34,13 @@ public class ExaminationPaperServiceImpl extends BaseServiceImpl<ExaminationPape
 	}
 
 	@Override
-	public void addExaminationPaper(ExaminationPaper examinationPaper) throws BizfwServiceException {
-		// TODO Auto-generated method stub
-
+	public String addExaminationPaper(ExaminationPaper examinationPaper) throws BizfwServiceException {
+		return save(examinationPaper);
 	}
 
 	@Override
-	public void addQuestion(PaperQuestion paperQuestion) throws BizfwServiceException {
-		// TODO Auto-generated method stub
-
+	public String addQuestion(PaperQuestion paperQuestion) throws BizfwServiceException {
+		return paperQuestionDao.save(paperQuestion);
 	}
 
 }

@@ -32,20 +32,19 @@ public class SubjectServiceImpl extends BaseServiceImpl<Subject> implements Subj
 
 	@Override
 	public List<Subject> getAllSubject() throws BizfwServiceException {
-		// TODO Auto-generated method stub
-		return null;
+		return list();
 	}
 
 	@Override
-	public void addSubject(Subject subject) throws BizfwServiceException {
-		// TODO Auto-generated method stub
-
+	public String addSubject(Subject subject) throws BizfwServiceException {
+		String id = save(subject);
+		return id;
 	}
 
 	@Override
 	public void deleteSubject(Subject subject) throws BizfwServiceException {
-		// TODO Auto-generated method stub
-
+		checkObjectNotNull(subject, "科目", "删除科目");
+		delete(subject.getIdBfSubject());
 	}
 
 }

@@ -1,3 +1,4 @@
 # bizfw
 * we are thinkequip
-* focus on some frameworks function
+* provide some frameworks functions
+* and rapid way to development custom module

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.thinkequip.bizfw.base.BaseAction;
 import com.thinkequip.bizfw.base.BizfwServiceException;
+import com.thinkequip.bizfw.po.model.People;
 import com.thinkequip.exam.model.Subject;
 import com.thinkequip.exam.service.SubjectService;
 
@@ -29,7 +30,7 @@ public class SubjectAction extends BaseAction {
 	private SubjectService subjectService;
 
 	@ResponseBody
-	@RequestMapping("/getAllSubject")
+	@RequestMapping("/getAllSubject.do")
 	public List<Subject> getAllSubject() throws BizfwServiceException {
 		return subjectService.getAllSubject();
 	}
@@ -37,12 +38,15 @@ public class SubjectAction extends BaseAction {
 	@ResponseBody
 	@RequestMapping("/addSubject.do")
 	public void addSubject(HttpServletRequest request, Subject subject) throws BizfwServiceException {
-
+		People people = getLoginPeople(request);
+		subject.init(people.getCode());
+		subjectService.addSubject(subject);
 	}
 
 	@ResponseBody
 	@RequestMapping("/deleteSubject.do")
 	public void deleteSubject(HttpServletRequest request, String subjectId) throws BizfwServiceException {
-
+		Subject subject = subjectService.queryById(subjectId);
+		subjectService.deleteSubject(subject);
 	}
 }

@@ -23,7 +23,15 @@ public interface SubjectService extends BaseService<Subject> {
 	 */
 	public List<Subject> getAllSubject() throws BizfwServiceException;
 
-	public void addSubject(Subject subject) throws BizfwServiceException;
+	/**
+	 * 新增科目
+	 * 
+	 * @param subject
+	 *            科目模型
+	 * @return 主键
+	 * @throws BizfwServiceException
+	 */
+	public String addSubject(Subject subject) throws BizfwServiceException;
 
 	public void deleteSubject(Subject subject) throws BizfwServiceException;
 }

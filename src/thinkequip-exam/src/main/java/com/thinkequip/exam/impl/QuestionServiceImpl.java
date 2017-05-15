@@ -31,15 +31,15 @@ public class QuestionServiceImpl extends BaseServiceImpl<Question> implements Qu
 	}
 
 	@Override
-	public List<Question> getQuestionsBySubjectId() throws BizfwServiceException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Question> getQuestionsBySubjectId(String subjectId) throws BizfwServiceException {
+		List<Question> list = queryByFieldAndValue(Question.COLUMN_SUBJECT_ID, subjectId);
+		return list;
 	}
 
 	@Override
-	public void addQuestion(Question question) throws BizfwServiceException {
-		// TODO Auto-generated method stub
-
+	public String addQuestion(Question question) throws BizfwServiceException {
+		String id = save(question);
+		return id;
 	}
 
 }

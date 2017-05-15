@@ -23,6 +23,8 @@ public class Question extends BaseModel {
 
 	private static final long serialVersionUID = 7085771306496751770L;
 
+	public static final String COLUMN_SUBJECT_ID = "subjectId";
+
 	/** 主键 */
 	@Id
 	@Column(name = "id_bf_question")

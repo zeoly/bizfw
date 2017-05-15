@@ -14,8 +14,16 @@ import com.thinkequip.exam.model.PaperQuestion;
  */
 public interface ExaminationPaperService extends BaseService<ExaminationPaper> {
 
-	public void addExaminationPaper(ExaminationPaper examinationPaper) throws BizfwServiceException;
+	/**
+	 * 新增考卷
+	 * 
+	 * @param examinationPaper
+	 *            考卷模型
+	 * @return 主键
+	 * @throws BizfwServiceException
+	 */
+	public String addExaminationPaper(ExaminationPaper examinationPaper) throws BizfwServiceException;
 
-	public void addQuestion(PaperQuestion paperQuestion) throws BizfwServiceException;
+	public String addQuestion(PaperQuestion paperQuestion) throws BizfwServiceException;
 
 }

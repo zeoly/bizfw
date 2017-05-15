@@ -23,6 +23,8 @@ public class ExaminationRoleRelation extends BaseModel {
 
 	private static final long serialVersionUID = -3355952611322114225L;
 
+	public static final String COLUMN_EXAMINATION_ID = "examinationId";
+
 	/** 主键 */
 	@Id
 	@Column(name = "id_bf_exam_role_rel")
@@ -40,6 +42,12 @@ public class ExaminationRoleRelation extends BaseModel {
 
 	public ExaminationRoleRelation(String peopleCode) {
 		super(peopleCode);
+	}
+
+	public ExaminationRoleRelation(String peopleCode, String examinationId, String roleId) {
+		super(peopleCode);
+		this.examinationId = examinationId;
+		this.roleId = roleId;
 	}
 
 	public String getIdBfExamRoleRel() {
