@@ -42,6 +42,14 @@ public class AnswerSheet extends BaseModel {
 	@Column(name = "score")
 	private Integer score;
 
+	/** 考试耗时（单位：分钟） */
+	@Column(name = "exam_time")
+	private Integer examTime;
+
+	/** 答题次数 */
+	@Column(name = "attend_times")
+	private Integer attendTimes;
+
 	public AnswerSheet(String peopleCode) {
 		super(peopleCode);
 	}
@@ -76,6 +84,22 @@ public class AnswerSheet extends BaseModel {
 
 	public void setScore(Integer score) {
 		this.score = score;
+	}
+
+	public Integer getExamTime() {
+		return examTime;
+	}
+
+	public void setExamTime(Integer examTime) {
+		this.examTime = examTime;
+	}
+
+	public Integer getAttendTimes() {
+		return attendTimes;
+	}
+
+	public void setAttendTimes(Integer attendTimes) {
+		this.attendTimes = attendTimes;
 	}
 
 }

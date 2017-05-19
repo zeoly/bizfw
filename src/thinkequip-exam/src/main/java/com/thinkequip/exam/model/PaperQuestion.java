@@ -38,6 +38,10 @@ public class PaperQuestion extends BaseModel {
 	@Column(name = "orders")
 	private Integer orders;
 
+	/** 类型 */
+	@Column(name = "type")
+	private String type;
+
 	/** 对应问题id */
 	@Column(name = "id_bf_question")
 	private String questionId;
@@ -80,6 +84,14 @@ public class PaperQuestion extends BaseModel {
 
 	public void setOrders(Integer orders) {
 		this.orders = orders;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getQuestionId() {

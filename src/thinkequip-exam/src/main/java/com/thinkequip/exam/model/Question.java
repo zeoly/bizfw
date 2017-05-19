@@ -48,6 +48,10 @@ public class Question extends BaseModel {
 	@Column(name = "type")
 	private String type;
 
+	/** 难度 */
+	@Column(name = "difficulty")
+	private String difficulty;
+
 	public Question(String peopleCode) {
 		super(peopleCode);
 	}
@@ -90,6 +94,14 @@ public class Question extends BaseModel {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getDifficulty() {
+		return difficulty;
+	}
+
+	public void setDifficulty(String difficulty) {
+		this.difficulty = difficulty;
 	}
 
 }

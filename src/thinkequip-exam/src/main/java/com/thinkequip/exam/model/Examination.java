@@ -28,6 +28,10 @@ public class Examination extends BaseModel {
 	@GeneratedValue(generator = "uuid")
 	private String idBfExamination;
 
+	/** 所属科目id */
+	@Column(name = "id_bf_subject")
+	private String subjectId;
+
 	/** 考试名称 */
 	@Column(name = "name")
 	private String name;
@@ -40,6 +44,26 @@ public class Examination extends BaseModel {
 	@Column(name = "end_date")
 	private Date endDate;
 
+	/** 及格分数 */
+	@Column(name = "pass_score")
+	private Integer passScore;
+
+	/** 参加考试次数上限 */
+	@Column(name = "attend_limit")
+	private Integer attendLimit;
+
+	/** 考试时间限制（单位：分钟） */
+	@Column(name = "time_limit")
+	private Integer timeLimit;
+
+	/** 待考人数 */
+	@Column(name = "candidates_quantity")
+	private Integer candidatesQuantity;
+
+	/** 参加考试人数 */
+	@Column(name = "examinee_quantity")
+	private Integer examineeQuantity;
+
 	public Examination(String peopleCode) {
 		super(peopleCode);
 	}
@@ -50,6 +74,14 @@ public class Examination extends BaseModel {
 
 	public void setIdBfExamination(String idBfExamination) {
 		this.idBfExamination = idBfExamination;
+	}
+
+	public String getSubjectId() {
+		return subjectId;
+	}
+
+	public void setSubjectId(String subjectId) {
+		this.subjectId = subjectId;
 	}
 
 	public String getName() {
@@ -74,6 +106,46 @@ public class Examination extends BaseModel {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public Integer getPassScore() {
+		return passScore;
+	}
+
+	public void setPassScore(Integer passScore) {
+		this.passScore = passScore;
+	}
+
+	public Integer getAttendLimit() {
+		return attendLimit;
+	}
+
+	public void setAttendLimit(Integer attendLimit) {
+		this.attendLimit = attendLimit;
+	}
+
+	public Integer getTimeLimit() {
+		return timeLimit;
+	}
+
+	public void setTimeLimit(Integer timeLimit) {
+		this.timeLimit = timeLimit;
+	}
+
+	public Integer getCandidatesQuantity() {
+		return candidatesQuantity;
+	}
+
+	public void setCandidatesQuantity(Integer candidatesQuantity) {
+		this.candidatesQuantity = candidatesQuantity;
+	}
+
+	public Integer getExamineeQuantity() {
+		return examineeQuantity;
+	}
+
+	public void setExamineeQuantity(Integer examineeQuantity) {
+		this.examineeQuantity = examineeQuantity;
 	}
 
 }

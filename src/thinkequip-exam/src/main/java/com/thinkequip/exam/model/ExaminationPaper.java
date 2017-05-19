@@ -30,6 +30,22 @@ public class ExaminationPaper extends BaseModel {
 	@GeneratedValue(generator = "uuid")
 	private String idBfExaminationPaper;
 
+	/** 所属科目id */
+	@Column(name = "id_bf_subject")
+	private String subjectId;
+
+	/** 试卷总分 */
+	@Column(name = "total_score")
+	private Integer totalScore;
+
+	/** 试题数量 */
+	@Column(name = "question_quantity")
+	private Integer questionQuantity;
+
+	/** 试卷难度 */
+	@Column(name = "difficulty")
+	private String difficulty;
+
 	/** 试卷生成策略 */
 	@Column(name = "generate_type")
 	private String generateType;
@@ -46,12 +62,44 @@ public class ExaminationPaper extends BaseModel {
 		this.idBfExaminationPaper = idBfExaminationPaper;
 	}
 
+	public String getSubjectId() {
+		return subjectId;
+	}
+
+	public void setSubjectId(String subjectId) {
+		this.subjectId = subjectId;
+	}
+
 	public String getGenerateType() {
 		return generateType;
 	}
 
 	public void setGenerateType(String generateType) {
 		this.generateType = generateType;
+	}
+
+	public Integer getTotalScore() {
+		return totalScore;
+	}
+
+	public void setTotalScore(Integer totalScore) {
+		this.totalScore = totalScore;
+	}
+
+	public Integer getQuestionQuantity() {
+		return questionQuantity;
+	}
+
+	public void setQuestionQuantity(Integer questionQuantity) {
+		this.questionQuantity = questionQuantity;
+	}
+
+	public String getDifficulty() {
+		return difficulty;
+	}
+
+	public void setDifficulty(String difficulty) {
+		this.difficulty = difficulty;
 	}
 
 }
