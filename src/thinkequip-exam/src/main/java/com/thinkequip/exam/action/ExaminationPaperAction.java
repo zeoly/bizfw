@@ -29,4 +29,10 @@ public class ExaminationPaperAction extends BaseAction {
 	public void addPaper(ExaminationPaper examinationPaper) throws BizfwServiceException {
 
 	}
+
+	@ResponseBody
+	@RequestMapping()
+	public void deletePaper(String paperId) throws BizfwServiceException {
+
+	}
 }
