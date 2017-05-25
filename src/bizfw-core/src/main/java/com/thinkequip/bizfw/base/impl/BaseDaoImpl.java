@@ -87,12 +87,13 @@ public class BaseDaoImpl<T extends BaseModel> extends HibernateDaoSupport implem
 		query.executeUpdate();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public long getCountByFieldAndValue(String field, Object value) {
-		String hql = "select from " + getTableName() + " as t where t." + field + " = :value";
-		Query<T> query = createQuery(hql);
+		String hql = "select count(0) from " + getTableName() + " as t where t." + field + " = :value";
+		Query<Long> query = getSession().createQuery(hql);
 		query.setParameter("value", value);
-		return query.getFetchSize().longValue();
+		return query.uniqueResult();
 	}
 
 	public T load(String id) {

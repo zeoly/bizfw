@@ -14,7 +14,6 @@
 		<module>thinkequip-exam</module>
 	</modules>
 
-
 	<properties>
 		<compiler.version>1.8</compiler.version>
 		<org.hibernate.version>5.2.8.Final</org.hibernate.version>

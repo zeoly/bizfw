@@ -129,7 +129,7 @@ public class DepartmentServiceImpl extends BaseServiceImpl<Department> implement
 
 	@Override
 	public boolean hasChildDepartment(Department department) throws BizfwServiceException {
-		long count = departmentRelationDao.getCountByFieldAndValue(DepartmentRelation.COLUMN_PARENT_DEPARTMENT_ID,
+		long count = departmentDao.getCountByFieldAndValue(Department.COLUMN_PARENT_DEPT_ID,
 				department.getIdBfDepartment());
 		if (count > 0) {
 			return true;
