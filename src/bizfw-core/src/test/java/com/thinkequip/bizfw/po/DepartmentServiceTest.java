@@ -72,15 +72,11 @@ public class DepartmentServiceTest extends BaseTest {
 		assertNull(dbDepartment);
 	}
 
-	// @Test
-	public void testGetParentDepartment() {
-		try {
-			Department department = departmentService.queryByCode("0");
-			Department parentDepartment = departmentService.getParentDepartment(department);
-			System.out.println(parentDepartment.getName());
-		} catch (BizfwServiceException e) {
-			System.out.println(e.getErrorMsg());
-		}
+	@Test
+	public void testGetParentDepartment() throws BizfwServiceException {
+		Department department = departmentService.queryByCode("1");
+		Department parentDepartment = departmentService.getParentDepartment(department);
+		assertEquals("root", parentDepartment.getName());
 	}
 
 }
