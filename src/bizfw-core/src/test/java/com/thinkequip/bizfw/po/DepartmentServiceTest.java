@@ -57,12 +57,18 @@ public class DepartmentServiceTest extends BaseTest {
 	@Test
 	public void testDeleteDepartmentHasPeople() throws BizfwServiceException {
 		expectedException.expect(BizfwServiceException.class);
-		expectedException.expectMessage(ErrorCode.PeopleDept.Dept.DEL_FAIL_WITH_CHILD);
+		expectedException.expectMessage(ErrorCode.PeopleDept.Dept.DEL_FAIL_WITH_PEOPLE);
 
-		Department department = departmentService.queryByCode("root");
+		Department department = departmentService.queryByCode("11");
+		departmentService.deleteDepartment(department);
+	}
+
+	@Test
+	public void testDeleteDepartment() throws BizfwServiceException {
+		Department department = departmentService.queryByCode("211");
 		departmentService.deleteDepartment(department);
 
-		Department dbDepartment = departmentService.queryByCode("root");
+		Department dbDepartment = departmentService.queryByCode("211");
 		assertNull(dbDepartment);
 	}
 
@@ -77,27 +83,4 @@ public class DepartmentServiceTest extends BaseTest {
 		}
 	}
 
-	// @Test
-	public void test() {
-		try {
-			Department department = new Department("test");
-			department.setLevel(Department.LEVEL_ROOT + 1);
-			department.setCode("0");
-			department.setName("测试root机构");
-			Department parentDepartment = departmentService.queryByCode("root");
-			department.setParentDepartmentId(parentDepartment.getIdBfDepartment());
-			departmentService.addDepartment(department);
-
-			department = departmentService.queryByCode("0");
-			System.out.println(department.getName());
-			department.setName("测试root机构1");
-			departmentService.modifyDepartment(department);
-
-			department = departmentService.queryByCode("0");
-			System.out.println(department.getName());
-			departmentService.deleteDepartment(department);
-		} catch (BizfwServiceException e) {
-			System.out.println(e.getErrorMsg());
-		}
-	}
 }
