@@ -6,7 +6,6 @@
 	<artifactId>bizfw-all</artifactId>
 	<version>1.0</version>
 	<packaging>pom</packaging>
-	<build />
 	<modules>
 		<module>bizfw-core</module>
 		<module>bizfw-document</module>
@@ -21,6 +20,7 @@
 		<org.springframework.version>4.3.6.RELEASE</org.springframework.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
 	<dependencyManagement>
 		<dependencies>
 			<!-- servlet -->
@@ -197,4 +197,32 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>${compiler.version}</source>
+						<target>${compiler.version}</target>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>cobertura-maven-plugin</artifactId>
+					<configuration>
+						<instrumentation>
+							<excludes>
+								<exclude>com/thinkequip/bizfw/*/action/*.class</exclude>
+								<exclude>com/thinkequip/bizfw/*/service/*.class</exclude>
+								<exclude>com/thinkequip/bizfw/*/model/*.class</exclude>
+							</excludes>
+						</instrumentation>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
