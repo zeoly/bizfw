@@ -3,6 +3,8 @@ package com.thinkequip.bizfw.po;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import java.util.List;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -39,7 +41,7 @@ public class DepartmentServiceTest extends BaseTest {
 	public void testModifyDepartment() throws BizfwServiceException {
 		Department department = departmentService.queryByCode("root");
 		department.setName("测试修改");
-		departmentService.update(department);
+		departmentService.modifyDepartment(department);
 
 		Department dbDepartment = departmentService.queryByCode("root");
 		assertEquals("测试修改", dbDepartment.getName());
@@ -79,4 +81,31 @@ public class DepartmentServiceTest extends BaseTest {
 		assertEquals("root", parentDepartment.getName());
 	}
 
+	@Test
+	public void testGetChildDepartmentList() throws BizfwServiceException {
+		Department department = departmentService.queryByCode("root");
+		List<Department> list = departmentService.getChildDepartmentList(department.getIdBfDepartment());
+		assertEquals(list.size(), 3);
+	}
+
+	@Test
+	public void testGetAllParentDeptmentList() throws BizfwServiceException {
+		Department department = departmentService.queryByCode("1");
+		List<Department> list = departmentService.getAllParentDeptmentList(department.getIdBfDepartment());
+		assertEquals(list.size(), 1);
+	}
+
+	@Test
+	public void testGetAllChildDeptmentList() throws BizfwServiceException {
+		Department department = departmentService.queryByCode("1");
+		List<Department> list = departmentService.getAllChildDeptmentList(department.getIdBfDepartment());
+		assertEquals(list.size(), 3);
+	}
+
+	@Test
+	public void testGetDepartmentTreeByDepartmentId() throws BizfwServiceException {
+		Department department = departmentService.queryByCode("1");
+		Department node = departmentService.getDepartmentTreeByDepartmentId(department.getIdBfDepartment());
+		assertEquals(node.getChildDepartmentList().size(), 2);
+	}
 }
