@@ -23,6 +23,8 @@ public class Subject extends BaseModel {
 
 	private static final long serialVersionUID = -9152776972927305335L;
 
+	public static final String COLUMN_NAME = "name";
+
 	/** 主键 */
 	@Id
 	@Column(name = "id_bf_subject")
@@ -37,6 +39,10 @@ public class Subject extends BaseModel {
 	/** 父科目id */
 	@Column(name = "parent_id")
 	private String parentId;
+
+	public Subject() {
+		super();
+	}
 
 	public Subject(String peopleCode) {
 		super(peopleCode);

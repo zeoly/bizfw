@@ -53,6 +53,22 @@ public class BaseDaoImpl<T extends BaseModel> extends HibernateDaoSupport implem
 	}
 
 	@Override
+	public List<T> listAndSortAsc(String sortField) {
+		String hql = "from " + getTableName() + " order by " + sortField;
+		Query<T> query = createQuery(hql);
+		List<T> list = query.list();
+		return list;
+	}
+
+	@Override
+	public List<T> listAndSortDesc(String sortField) {
+		String hql = "from " + getTableName() + " order by " + sortField + " desc";
+		Query<T> query = createQuery(hql);
+		List<T> list = query.list();
+		return list;
+	}
+
+	@Override
 	public void delete(String id) {
 		getSession().delete(load(id));
 	}

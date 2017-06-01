@@ -19,20 +19,20 @@ import com.thinkequip.exam.service.SubjectService;
  * @author zengyongli
  * @date 2017年5月8日
  */
-@Service
+@Service("subjectService")
 public class SubjectServiceImpl extends BaseServiceImpl<Subject> implements SubjectService {
 
 	@Autowired
-	private SubjectDao SubjectDao;
+	private SubjectDao subjectDao;
 
 	@Override
 	public BaseDao<Subject> getBaseDao() {
-		return SubjectDao;
+		return subjectDao;
 	}
 
 	@Override
 	public List<Subject> getAllSubject() throws BizfwServiceException {
-		return list();
+		return subjectDao.listAndSortAsc(Subject.COLUMN_NAME);
 	}
 
 	@Override

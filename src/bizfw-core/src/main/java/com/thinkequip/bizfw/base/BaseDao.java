@@ -15,6 +15,10 @@ public interface BaseDao<T extends BaseModel> {
 
 	public List<T> list();
 
+	public List<T> listAndSortAsc(String sortField);
+
+	public List<T> listAndSortDesc(String sortField);
+
 	public String save(T t);
 
 	public void saveOrUpdate(T t);

@@ -33,5 +33,12 @@ public interface SubjectService extends BaseService<Subject> {
 	 */
 	public String addSubject(Subject subject) throws BizfwServiceException;
 
+	/**
+	 * 删除科目
+	 * 
+	 * @param subject
+	 *            科目模型
+	 * @throws BizfwServiceException
+	 */
 	public void deleteSubject(Subject subject) throws BizfwServiceException;
 }
