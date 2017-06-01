@@ -25,6 +25,18 @@ public class Question extends BaseModel {
 
 	public static final String COLUMN_SUBJECT_ID = "subjectId";
 
+	public static final String TYPE_SELECT = "0";
+
+	public static final String TYPE_MULTI_SELECT = "1";
+
+	public static final String TYPE_FILL = "2";
+	
+	public static final String DIFFICULTY_EASY = "0";
+	
+	public static final String DIFFICULTY_MEDIUM = "1";
+	
+	public static final String DIFFICULTY_HARD = "2";
+
 	/** 主键 */
 	@Id
 	@Column(name = "id_bf_question")

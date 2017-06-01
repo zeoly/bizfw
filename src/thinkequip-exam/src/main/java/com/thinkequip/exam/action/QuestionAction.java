@@ -48,4 +48,5 @@ public class QuestionAction extends BaseAction {
 	public Question getQuestionById(String questionId) throws BizfwServiceException {
 		return questionService.queryById(questionId);
 	}
+
 }
