@@ -49,4 +49,9 @@ public class QuestionAction extends BaseAction {
 		return questionService.queryById(questionId);
 	}
 
+	@ResponseBody
+	@RequestMapping
+	public void modifyQuestion(HttpServletRequest request, Question question) throws BizfwServiceException {
+
+	}
 }
