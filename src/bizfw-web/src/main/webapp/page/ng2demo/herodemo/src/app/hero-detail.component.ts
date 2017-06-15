@@ -16,6 +16,7 @@ import 'rxjs/add/operator/switchMap';
                 <label>name:</label>
                 <input [(ngModel)]="hero.name" placeholder="please input"/>
             </div>
+            <button (click)="save()">Save</button>
             <button (click)="goBack()">Back</button>
         </div>
     `,
@@ -33,6 +34,10 @@ export class HeroDetailComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.switchMap((params: Params) => this.heroService.getHero(+params['id'])).subscribe(hero => this.hero = hero);
+    }
+
+    save(): void {
+        this.heroService.update(this.hero).then(() => this.goBack());
     }
 
     goBack(): void {
