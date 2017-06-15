@@ -1,0 +1,22 @@
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+body, html{
+  height: 100%;
+}
+.myheader {
+  height : 80px;
+  background: #369;
+}
+.mynav{
+  width: 200px;
+  float: left;
+  height: 800px;
+  background: #649;
+}
+.myfooter{
+  clear: left;
+  background: #888;
+}
