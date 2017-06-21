@@ -1,0 +1,17 @@
+<div class="mycontent">
+    <span>Input: </span>
+    <md-input-container>
+        <input mdInput placeholder="input first name">
+    </md-input-container><br>
+
+    <span>Button: </span>
+    <button md-raised-button>Button</button><br>
+
+    <span>Radio: </span>
+    <md-radio-group [(ngModel)]="seleted">
+        <md-radio-button *ngFor="let item of items" [value]="item">
+            {{item}}
+        </md-radio-button>
+    </md-radio-group><br>
+    <span>you select: {{seleted}}</span>
+</div>

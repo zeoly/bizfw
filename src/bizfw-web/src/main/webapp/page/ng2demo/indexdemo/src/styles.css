@@ -14,10 +14,14 @@ body, html{
   width: 200px;
   float: left;
   height: 800px;
-  background: #649;
+  background: #BBFFFF;
+}
+.mycontent{
+  height: 800px;
+  background: #E0E0E0;
 }
 .myfooter{
   clear: left;
   height: 30px;
-  background: #888;
+  background: #369;
 }
