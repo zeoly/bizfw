@@ -36,21 +36,7 @@
 				<prop key="hibernate.connection.autocommit">true</prop>
 			</props>
 		</property>
-		<property name="annotatedClasses">
-			<list>
-				<value>com.thinkequip.bizfw.po.model.People</value>
-				<value>com.thinkequip.bizfw.po.model.Department</value>
-				<value>com.thinkequip.bizfw.po.model.DepartmentRelation</value>
-				<value>com.thinkequip.bizfw.auth.model.Role</value>
-				<value>com.thinkequip.bizfw.auth.model.Menu</value>
-				<value>com.thinkequip.bizfw.auth.model.PeopleRoleRelation</value>
-				<value>com.thinkequip.bizfw.auth.model.RoleMenuRelation</value>
-				<value>com.thinkequip.bizfw.document.model.Document</value>
-				<value>com.thinkequip.bizfw.document.model.RoleDocumentRelation</value>
-				<value>com.thinkequip.bizfw.document.model.DocumentOperationLog</value>
-				<value>com.thinkequip.bizfw.document.model.FileDeleted</value>
-			</list>
-		</property>
+		<property name="packagesToScan" value="com.thinkequip"></property>
 	</bean>
 
 	<bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
