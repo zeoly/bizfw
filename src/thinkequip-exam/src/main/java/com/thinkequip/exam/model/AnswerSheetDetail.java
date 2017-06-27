@@ -46,6 +46,10 @@ public class AnswerSheetDetail extends BaseModel {
 	@Column(name = "score")
 	private Integer score;
 
+	public AnswerSheetDetail() {
+		super();
+	}
+
 	public AnswerSheetDetail(String peopleCode) {
 		super(peopleCode);
 	}

@@ -50,6 +50,10 @@ public class AnswerSheet extends BaseModel {
 	@Column(name = "attend_times")
 	private Integer attendTimes;
 
+	public AnswerSheet() {
+		super();
+	}
+
 	public AnswerSheet(String peopleCode) {
 		super(peopleCode);
 	}

@@ -64,6 +64,10 @@ public class Examination extends BaseModel {
 	@Column(name = "examinee_quantity")
 	private Integer examineeQuantity;
 
+	public Examination() {
+		super();
+	}
+
 	public Examination(String peopleCode) {
 		super(peopleCode);
 	}
