@@ -58,6 +58,10 @@ public class PaperQuestion extends BaseModel {
 	@Column(name = "score")
 	private Integer score;
 
+	public PaperQuestion() {
+		super();
+	}
+
 	public PaperQuestion(String peopleCode) {
 		super(peopleCode);
 	}

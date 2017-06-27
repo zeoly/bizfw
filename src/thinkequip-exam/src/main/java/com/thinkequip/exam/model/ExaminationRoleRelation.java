@@ -40,6 +40,10 @@ public class ExaminationRoleRelation extends BaseModel {
 	@Column(name = "id_bf_role")
 	private String roleId;
 
+	public ExaminationRoleRelation() {
+		super();
+	}
+
 	public ExaminationRoleRelation(String peopleCode) {
 		super(peopleCode);
 	}

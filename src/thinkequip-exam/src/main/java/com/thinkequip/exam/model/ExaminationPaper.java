@@ -50,6 +50,10 @@ public class ExaminationPaper extends BaseModel {
 	@Column(name = "generate_type")
 	private String generateType;
 
+	public ExaminationPaper() {
+		super();
+	}
+
 	public ExaminationPaper(String peopleCode) {
 		super(peopleCode);
 	}

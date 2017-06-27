@@ -38,6 +38,14 @@ public class ExaminationPaperRelation extends BaseModel {
 	@Column(name = "id_bf_exam_paper")
 	private String paperId;
 
+	public ExaminationPaperRelation() {
+		super();
+	}
+
+	public ExaminationPaperRelation(String peopleCode) {
+		super(peopleCode);
+	}
+
 	public ExaminationPaperRelation(String peopleCode, String examinationId, String paperId) {
 		super(peopleCode);
 		this.examinationId = examinationId;

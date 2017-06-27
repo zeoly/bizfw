@@ -64,6 +64,10 @@ public class Question extends BaseModel {
 	@Column(name = "difficulty")
 	private String difficulty;
 
+	public Question() {
+		super();
+	}
+
 	public Question(String peopleCode) {
 		super(peopleCode);
 	}
